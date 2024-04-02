@@ -1,0 +1,289 @@
+use project;
+
+Create table BB_Manager(
+M_id int not null,
+mname varchar(30) not null,
+m_phno bigint
+);
+
+insert into BB_Manager values(102,'Jack',4693959671),
+(103,'Peter',4693959601),
+(103,'Mark',4693959677),
+(105,'Jason',4693957671),
+(106,'Steve', 4694959671), 
+(107,'Jason', 4695959671), 
+(108,'Stella', 4663959671), 
+(109,'Monika', 4673959671), 
+(110,'John', 4693859671); 
+Select* from BB_Manager;
+
+CREATE TABLE Blood_Donor 
+( bd_ID int NOT NULL, 
+bd_name varchar(30) NOT NULL, 
+bd_age int, 
+bd_sex varchar(10), 
+bd_Bgroup varchar(10), 
+bd_reg_date date, 
+reco_ID int NOT NULL, 
+City_ID int NOT NULL  
+);
+
+INSERT into Blood_Donor 
+VALUES(150221,'Mark',25,'M','B+','2015-12-17',101212,1100), 
+(160011,'Abdul',35,'F','A+','2016-11-22',101212,1100), 
+(160101,'Smith',22,'M','O+','2016-01-04',101312,1200), 
+(150011,'Pat',29,'M','O+','2015-07-19',101412,1300), 
+(150021,'Shyam',42,'F','A-','2015-12-24',101412,1300), 
+(150121,'Dan',44,'M','AB+','2015-08-28',101212,1200), 
+(160031,'Mike',33,'F','AB-','2016-02-06',101212,1400), 
+(160301,'Elisa',31,'F','AB+','2016-09-10',101312,1200), 
+(160091,'Carrol',24,'M','B-','2016-10-15',101312,1500), 
+(160401,'Mark',29,'M','O-','2016-12-17',101212,1200); 
+
+select * from Blood_Donor ;
+
+CREATE TABLE BloodSpecimen 
+( specimen_number int NOT NULL, 
+b_group varchar(10) NOT NULL, 
+status int, 
+dfind_ID int NOT NULL, 
+M_id int NOT NULL 
+); 
+
+INSERT into BloodSpecimen 
+VALUES(1001, 'B+', 1,11,101), 
+(1002, 'O+', 1,12,102), 
+(1003, 'AB+', 1,11,102), 
+(1004, 'O-', 1,13,103), 
+(1005, 'A+', 0,14,101), 
+(1006, 'A-', 1,13,104), 
+(1007, 'AB-', 1,15,104), 
+(1008, 'AB-', 0,11,105), 
+(1009, 'B+', 1,13,105), 
+(1010, 'O+', 0,12,105), 
+(1011, 'O+', 1,13,103), 
+(1012, 'O-', 1,14,102), 
+(1013, 'B-', 1,14,102), 
+(1014, 'AB+', 0,15,101); 
+Select * from BloodSpecimen;
+
+CREATE TABLE City 
+( City_ID int NOT NULL, 
+City_name varchar(30) NOT NULL
+); 
+
+INSERT into City 
+VALUES(1200,'Austin'), 
+(1300,'Irving'), 
+(1400,'Houston'), 
+(1500,'Richardson'),
+(1600,'Plano'), 
+(1700,'Frisco'), 
+(1800,'Arlington'), 
+(1900,'San Antonio'), 
+(2000,'Tyler'); 
+select * from City;
+
+CREATE TABLE DiseaseFinder 
+( dfind_ID int NOT NULL, 
+dfind_name varchar(20) NOT NULL, 
+dfind_PhNo bigint 
+); 
+
+INSERT into DiseaseFinder 
+VALUES(11,'Peter',4693804223), 
+(12,'Park',4693804223), 
+(13,'Jerry',4693804223), 
+(14,'Mark',4693804223), 
+(15,'Monika',4693804223),
+(16,'Ram',4693804123), 
+(17,'Swathi',4693804223), 
+(18,'Gautham',4693804323), 
+(19,'Ashwin',4693804423), 
+(20,'Yash',4693804523); 
+
+select* from DiseaseFinder;
+
+CREATE TABLE Hospital_Info_1 
+( hosp_ID int NOT NULL, 
+hosp_name varchar(30) NOT NULL, 
+City_ID int NOT NULL, 
+M_id int NOT NULL 
+ 
+); 
+INSERT into Hospital_Info_1 
+VALUES(1,'MayoClinic',1100,101), 
+(2,'CleavelandClinic',1200,103), 
+(3,'NYU',1300,103), 
+(4,'Baylor',1400,104), 
+(5,'Charlton',1800,103), 
+(6,'Greenoaks',1300,106), 
+(7,'Forestpark',1300,102), 
+(8,'Parkland',1200,106), 
+(9,'Pinecreek',1500,109), 
+(10,'WalnutHill',1700,105); 
+select * from  Hospital_Info_1 ;
+
+CREATE TABLE Hospital_Info_2 
+( hosp_ID int NOT NULL, 
+hosp_name varchar(30) NOT NULL, 
+hosp_needed_Bgrp varchar(10), 
+hosp_needed_qnty int  
+
+); 
+
+INSERT into Hospital_Info_2 
+VALUES(1,'MayoClinic','A+',20), 
+(1,'MayoClinic','AB+',0), 
+(1,'MayoClinic','A-',40), 
+(1,'MayoClinic','B-',10), 
+(1,'MayoClinic','AB-',20), 
+(2,'CleavelandClinic','A+',40), 
+(2,'CleavelandClinic','AB+',20), 
+(2,'CleavelandClinic','A-',10), 
+(2,'CleavelandClinic','B-',30), 
+(2,'CleavelandClinic','B+',0), 
+(2,'CleavelandClinic','AB-',10),
+(3,'NYU','A+',0), 
+(3,'NYU','AB+',0), 
+(3,'NYU','A-',0), 
+(3,'NYU','B-',20),
+(3,'NYU','B+',10), 
+(3,'NYU','AB-',0),
+(4,'Baylor','A+',10), 
+(5,'Charlton','B+',30), 
+(4,'Baylor','A-',40), 
+(7,'Forestpark','B-',40), 
+(8,'Parkland','B+',10), 
+(9,'Pinecreek','AB-',20); 
+select * from Hospital_Info_2 ;
+
+CREATE TABLE Recipient 
+( reci_ID int NOT NULL, 
+reci_name varchar(20) NOT NULL, 
+reci_age int, 
+reci_Brgp varchar(10), 
+reci_Bqnty float, 
+reco_ID int NOT NULL, 
+City_ID int NOT NULL, 
+M_id int NOT NULL, 
+reci_sex varchar(10), 
+reci_reg_date date -- CONSTRAINT reciid_pk PRIMARY KEY (reci_id) 
+); 
+Alter table Recipient 
+ADD reci_sex varchar(10); 
+Alter table Recipient 
+ADD reci_reg_date date; 
+INSERT into Recipient 
+VALUES(10001,'Mark',25,'B+',1.5,101212,1100,101,'M','2015-12-17'), 
+(10002,'Dan',60,'A+',1,101312,1100,102,'M','2015-12-16'), 
+(10003,'Steve',35,'AB+',0.5,101312,1200,102,'M','2015-10-17'), 
+(10004,'Parker',66,'B+',1,101212,1300,104,'M','2016-11-17'), 
+(10005,'Jason',53,'B-',1,101412,1400,105,'M','2015-04-17'), 
+(10006,'Preetham',45,'O+',1.5,101512,1500,105,'M','2015-12-17'), 
+(10007,'Swetha',22,'AB-',1,101212,1500,101,'F','2015-05-17'); 
+INSERT into Recipient 
+VALUES(10008,'Swathi',25,'B+',2,101412,1300,103,'F','2015-12-14'), 
+(10009,'Lance',30,'A+',1.5,101312,1100,104,'M','2015-02-16'), 
+(10010,'Marsh',25,'AB+',3.5,101212,1200,107,'M','2016-10-17'); 
+select * from Recipient ;
+
+CREATE TABLE Recording_Staff 
+( reco_ID int NOT NULL, 
+reco_Name varchar(30) NOT NULL, 
+reco_phNo bigint -- CONSTRAINT recoID_pk PRIMARY KEY (reco_ID) 
+); 
+INSERT into Recording_Staff 
+VALUES(101212,'Walcot',4045806553), 
+(101312,'Henry',4045806553), 
+(101412,'Silva',4045806553), 
+(101512,'Adrian',4045806553), 
+(101612,'Mark',4045806553); 
+INSERT into Recording_Staff 
+VALUES(101712,'Abdul',4045816553), 
+(101812,'Jerry',4045826553), 
+(101912,'Tim',4045836553), 
+(101012,'Lekha',4044846553), 
+(101112,'Mark',4045856553); 
+select * from Recording_Staff;
+
+update City set City_name = 'Allen' where City_ID = 2000; 
+delete from Hospital_Info_2 where hosp_name = 'Charlton'; 
+
+
+select Blood_Donor.bd_name,Recipient.reci_name,reco_Name from 
+Recording_Staff  
+inner join Blood_Donor on Recording_Staff.reco_ID = Blood_Donor.reco_ID 
+inner join Recipient on Recording_Staff.reco_ID = Recipient.reco_ID 
+where Blood_Donor.bd_Bgroup = Recipient.reci_Brgp and 
+Blood_Donor.bd_reg_date = Recipient.reci_reg_date;
+
+Select specimen_number,b_group from BloodSpecimen,DiseaseFinder 
+WHERE BloodSpecimen.dfind_ID= DiseaseFinder.dfind_ID AND 
+dfind_name='Mark' AND status=1;
+
+select BB_Manager.M_id,mName,Recipient.reci_name, Recipient.reci_Brgp,b_group 
+from BB_Manager,Recipient,BloodSpecimen 
+where Recipient.M_id = BloodSpecimen.M_id and Recipient.reci_Brgp = 
+BloodSpecimen.b_group 
+and status = 1;
+
+Select bd_ID,bd_name,reci_ID,reci_name FROM Blood_Donor,Recipient  
+WHERE bd_Bgroup=reci_Brgp AND Blood_Donor.City_ID= Recipient.City_ID;
+
+Select hosp_ID,hosp_name , City_ID, HOspital_Info_1.M_id from Hospital_Info_1,BB_Manager 
+where BB_Manager.M_id=Hospital_Info_1.M_id and BB_Manager.M_id=103;
+
+
+select reci_name,bd_name
+from recipient  inner join blood_donor 
+on recipient.reco_ID=blood_donor.reco_ID
+where recipient.reci_Brgp=blood_donor.Bd_bgroup and recipient.reci_reg_date=blood_donor.bd_reg_date;
+
+select* from recipient;
+
+select*
+from bloodspecimen
+where status=1 and dfind_id in (select dfind_id
+from diseasefinder
+where dfind_name='mark');
+
+call SearchDonorsByBloodType ('A+');
+
+select* from blood_donor;
+
+select M_id,reci_name,reci_Brgp
+from recipient
+where M_id in(select M_id
+from bloodspecimen
+where reci_Brgp in (select b_group
+from recipient
+where status=1));
+
+
+select E1.bd_ID as blood_donor_id,
+E1.bd_name as  blood_donor_name,
+E1.City_ID as blood_donor_city,
+E2.reci_ID as recipient_id,
+E2.reci_name as recipient_name,
+E2.City_ID as recipient_city
+from blood_donor as E1,recipient as E2
+where E1.bd_Bgroup=E2.reci_Brgp and E1.City_ID=E2.City_ID;
+
+
+select hosp_ID,hosp_name,M_ID
+from hospital_info_1
+where M_ID in (select M_ID
+from bb_manager
+where M_ID=103);
+
+DELIMITER //
+create trigger before_insert_staffdata
+before insert on recording_staff for each row
+begin
+set new.Reco_id=102112;
+END //
+
+insert into recording_staff values(102112,'Allwin',4045836554);
+
+select* from recording_staff;
